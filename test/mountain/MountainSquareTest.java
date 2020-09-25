@@ -1,6 +1,13 @@
 package mountain;
 
+import static org.junit.Assert.*;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
 import org.junit.jupiter.api.Test;
+
+import util.InvalidArgumentException;
 
 /**
  * MountainSquareのテストコード
@@ -16,9 +23,26 @@ class MountainSquareTest {
 	 * アクセスできないx座標の値を指定したときのテスト<br>
 	 * y座標は正しい値
 	 *
+	 * @throws SecurityException
+	 * @throws NoSuchMethodException
+	 * @throws InvocationTargetException
+	 * @throws IllegalArgumentException
+	 * @throws IllegalAccessException
+	 * @throws InvalidArgumentException
+	 *
 	 */
 	@Test
-	void tc1_canIncrease() {
+	void tc1_canIncrease()
+			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+			InvocationTargetException, InvalidArgumentException {
+
+		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
+
+		Method canIncrease = MountainSquare.class.getDeclaredMethod("canIncrease", int.class, int.class);
+		canIncrease.setAccessible(true);
+
+		assertFalse((boolean) canIncrease.invoke(square, -1, 0));		// y座標は正しい値
+		assertFalse((boolean) canIncrease.invoke(square, ROWS + 1, 0));	// y座標は正しい値
 	}
 
 }
