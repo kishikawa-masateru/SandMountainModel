@@ -1,5 +1,7 @@
 package mountain;
 
+import util.InvalidArgumentException;
+
 /**
  * 上から見た砂山
  * @author masateru
@@ -9,12 +11,18 @@ public class MountainSquare {
 
 	private int[][] square;		//	上から見た砂山の各地点
 
-	public MountainSquare(int x, int y) {
+	public MountainSquare(int column, int row) throws InvalidArgumentException {
+
+		if (column <= 0)
+			throw new InvalidArgumentException("column");
+		if (row <= 0)
+			throw new InvalidArgumentException("row");
+
 		// square を初期化
-		square = new int[y][x];
-		for (int Y = 0; Y < y; Y++) {
-			for (int X = 0; X < x; X++) {
-				square[Y][X] = 0;
+		square = new int[row][column];
+		for (int y = 0; y < row; y++) {
+			for (int x = 0; x < column; x++) {
+				square[y][x] = 0;
 			}
 		}
 	}
