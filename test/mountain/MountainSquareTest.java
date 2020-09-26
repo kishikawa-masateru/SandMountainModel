@@ -35,7 +35,7 @@ class MountainSquareTest {
 	}
 
 	/**
-	 * 範囲外のx座標を指定したときのテスト<br>
+	 * 範囲外のx座標を指定したときのcanIncreaseメソッドのテスト<br>
 	 * y座標は正しい値
 	 *
 	 * @throws SecurityException
@@ -61,7 +61,7 @@ class MountainSquareTest {
 	}
 
 	/**
-	 * 範囲外のy座標の値を指定したときのテスト
+	 * 範囲外のy座標の値を指定したときのcanIncreaseメソッドのテスト
 	 * x座標は正しい値
 	 *
 	 * @throws NoSuchMethodException
@@ -86,7 +86,7 @@ class MountainSquareTest {
 	}
 
 	/**
-	 * 範囲内のx，y座標を指定したときのテスト
+	 * 範囲内のx，y座標を指定したときのcanIncreaseメソッドのテスト
 	 */
 	@Test
 	void tc3_canIncrease()
