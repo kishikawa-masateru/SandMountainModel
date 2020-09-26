@@ -35,14 +35,16 @@ public class MountainSquare {
 	 * (x, y) の数値を1つ増やす
 	 */
 	public void increase(int x, int y) {
-		square[y][x]++;
+
+		if (canIncrease(x, y))
+			square[y][x]++;
 
 		if (square[y][x] == 4) {
 			// (x, y) の値が4になったら，以下の処理を実行する
-			// (x, y) の値を0にする
+			// 1．(x, y) の値を0にする
 			square[y][x] = 0;
 
-			// 周囲の数値を+1する
+			// 2．周囲の数値を+1する
 			increaseAround(x, y);
 		}
 	}
@@ -54,20 +56,16 @@ public class MountainSquare {
 	 */
 	private void increaseAround(int x, int y) {
 		// (x - 1, y) の数値を+1
-		if (canIncrease(x - 1, y))
-			increase(x - 1, y);
+		increase(x - 1, y);
 
 		// (x, y - 1) の数値を+1
-		if (canIncrease(x, y - 1))
-			increase(x, y - 1);
+		increase(x, y - 1);
 
 		// (x + 1, y) の数値を+1
-		if (canIncrease(x + 1, y))
-			increase(x + 1, y);
+		increase(x + 1, y);
 
 		// (x, y + 1) の数値を+1
-		if (canIncrease(x, y + 1))
-			increase(x, y + 1);
+		increase(x, y + 1);
 	}
 
 	/**
