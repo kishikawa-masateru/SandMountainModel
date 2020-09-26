@@ -75,7 +75,7 @@ public class MountainSquare {
 	 * @return インクリメントできるとtrue<br>引数の値が，行列の範囲がだったらfalse<br>
 	 */
 	private boolean canIncrease(int x, int y) {
-		if (x < 0 || x => square[0].length || y < 0 || y => square.length)
+		if (x < 0 || x >= square[0].length || y < 0 || y >= square.length)
 			return false;
 
 		return true;
