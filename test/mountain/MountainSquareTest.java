@@ -17,7 +17,7 @@ import util.InvalidArgumentException;
 class MountainSquareTest {
 
 	private final int COLUMNS = 5;		// 行数
-	private final int ROWS = 5;		// 列数
+	private final int ROWS = 5;			// 列数
 
 	/**
 	 * コンストラクタのテスト
@@ -138,11 +138,25 @@ class MountainSquareTest {
 	/**
 	 * 引数が有効で，値を増やせるときのincreaseのテスト<br>
 	 *
-	 * ただし，座標の値は4以上にはならない
+	 * ただし，座標の値は4未満
+	 * @throws InvalidArgumentException
 	 */
 	@Test
-	void tc2_increase() {
+	void tc2_increase() throws InvalidArgumentException {
+		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
+		int[][] TEST_SQUARE = generate_TEST_SQUARE();
 
+		// 全座標を3増やす
+		// increaseを一回呼ぶごとに，全座標を比較する
+		for (int i = 0; i < 3; i++) {
+			for (int y = 0; y < ROWS; y++) {
+				for (int x = 0; x < COLUMNS; x++) {
+					square.increase(x, y);
+					TEST_SQUARE[y][x]++;
+					assertArray(TEST_SQUARE, square.getSquare());
+				}
+			}
+		}
 	}
 
 	/**
