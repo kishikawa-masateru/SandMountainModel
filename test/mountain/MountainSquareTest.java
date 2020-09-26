@@ -47,9 +47,8 @@ class MountainSquareTest {
 	 *
 	 */
 	@Test
-	void tc1_canIncrease()
-			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, InvalidArgumentException {
+	void tc1_canIncrease() throws NoSuchMethodException, SecurityException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, InvalidArgumentException {
 
 		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
 
@@ -72,9 +71,8 @@ class MountainSquareTest {
 	 * @throws InvalidArgumentException
 	 */
 	@Test
-	void tc2_canIncrease()
-			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, InvalidArgumentException {
+	void tc2_canIncrease() throws NoSuchMethodException, SecurityException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, InvalidArgumentException {
 
 		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
 
@@ -89,9 +87,8 @@ class MountainSquareTest {
 	 * 範囲内のx，y座標を指定したときのcanIncreaseメソッドのテスト
 	 */
 	@Test
-	void tc3_canIncrease()
-			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
-			InvocationTargetException, InvalidArgumentException {
+	void tc3_canIncrease() throws NoSuchMethodException, SecurityException, IllegalAccessException,
+			IllegalArgumentException, InvocationTargetException, InvalidArgumentException {
 
 		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
 
@@ -162,12 +159,29 @@ class MountainSquareTest {
 	/**
 	 * 引数が有効で，値を増やせるときのincreaseのテスト<br>
 	 *
-	 * ・ 増やす座標は，すべて3<br>
-	 * ・ 端っこの座標，周囲より内側の座標を指定する
+	 * ・ 座標が4になったときに，周囲の値をインクリメントするのかテスト
+	 * @throws InvalidArgumentException
 	 */
 	@Test
-	void tc3_inncrease() {
+	void tc3_inncrease() throws InvalidArgumentException {
+		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
+		int[][] TEST_SQUARE = {
+								{ 0, 1, 0, 1, 0 },
+								{ 1, 0, 1, 0, 1 },
+								{ 0, 1, 0, 1, 0 },
+								{ 1, 0, 1, 0, 1 },
+								{ 0, 1, 0, 1, 0 } };
 
+		// 雪山の端，中心の座標を4回インクリメント
+		for (int i = 0; i < 4; i++) {
+			square.increase(0, 0);
+			square.increase(COLUMNS - 1, 0);
+			square.increase(0, ROWS - 1);
+			square.increase(COLUMNS - 1, ROWS - 1);
+			square.increase(COLUMNS / 2, ROWS / 2);
+		}
+
+		assertArray(TEST_SQUARE, square.getSquare());
 	}
 
 	/**
