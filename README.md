@@ -5,7 +5,7 @@ srcディレクトリ下のファイルをjarに変換して，Processingにイ�
 
 JVMバージョン：1.8
 
-!["demo"](gif/SandModel_Animation.gif)
+!["demo"](picture/SandModel_Animation.gif)
 
 ## ディレクトリ構成
 
