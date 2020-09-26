@@ -9,7 +9,7 @@ import util.InvalidArgumentException;
  */
 public class MountainSquare {
 
-	private int[][] square;		//	上から見た砂山の各地点
+	private int[][] square;		//	上から見た砂山の各座標
 
 	public MountainSquare(int column, int row) throws InvalidArgumentException {
 
