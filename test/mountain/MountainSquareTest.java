@@ -16,8 +16,8 @@ import util.InvalidArgumentException;
  */
 class MountainSquareTest {
 
-	private final int COLUMNS = 10;		// 行数
-	private final int ROWS = 10;		// 列数
+	private final int COLUMNS = 5;		// 行数
+	private final int ROWS = 5;		// 列数
 
 	/**
 	 * コンストラクタのテスト
@@ -102,6 +102,56 @@ class MountainSquareTest {
 		for (int y = 0; y < ROWS; y++) {
 			for (int x = 0; x < COLUMNS; x++) {
 				assertTrue((boolean) canIncrease.invoke(square, x, y));
+			}
+		}
+	}
+
+	/**
+	 * 引数が無効の時のincreaseメソッドのテスト<br>
+	 *
+	 * 無効な引数を渡すと，MountainSquareオブジェクトが保持しているsquareフィールドが変わらないことを確認する
+	 * @throws InvalidArgumentException
+	 */
+	@Test
+	void tc1_increase() throws InvalidArgumentException {
+		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
+		int[][] TEST_SQUARE = new int[COLUMNS][ROWS];
+
+		for (int y = 0; y < COLUMNS; y++) {
+			for (int x = 0; x < ROWS; x++) {
+				TEST_SQUARE[y][x] = 0;
+			}
+		}
+
+		// squareは，内部でcanIncreaseを呼ぶので，tc1 ~ tc2 を参考にして，無効な引数を渡す
+		// x座標が0未満
+		square.increase(-1, 0);
+		assertArray(TEST_SQUARE, square.getSquare());
+
+		// x座標が列の長さ以上
+		square.increase(COLUMNS + 1, 0);
+		assertArray(TEST_SQUARE, square.getSquare());
+
+		// y座標が0未満
+		square.increase(0, -1);
+		assertArray(TEST_SQUARE, square.getSquare());
+
+		// y座標が行の長さ以上
+		square.increase(0, ROWS + 1);
+		assertArray(TEST_SQUARE, square.getSquare());
+	}
+
+	private void assertArray(int[][] expected, int[][] actual) {
+
+		// 縦と横の配列の長さが等しくないとテストに失敗する
+		if (expected.length != actual.length)
+			fail();
+		if (expected[0].length != actual[0].length)
+			fail();
+
+		for (int y = 0; y < actual.length; y++) {
+			for (int x = 0; x < actual[0].length; x++) {
+				assertEquals(expected[y][x], actual[y][x]);
 			}
 		}
 	}
