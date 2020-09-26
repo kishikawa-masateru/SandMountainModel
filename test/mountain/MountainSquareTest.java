@@ -115,13 +115,7 @@ class MountainSquareTest {
 	@Test
 	void tc1_increase() throws InvalidArgumentException {
 		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
-		int[][] TEST_SQUARE = new int[COLUMNS][ROWS];
-
-		for (int y = 0; y < COLUMNS; y++) {
-			for (int x = 0; x < ROWS; x++) {
-				TEST_SQUARE[y][x] = 0;
-			}
-		}
+		int[][] TEST_SQUARE = generate_TEST_SQUARE();
 
 		// squareは，内部でcanIncreaseを呼ぶので，tc1 ~ tc2 を参考にして，無効な引数を渡す
 		// x座標が0未満
@@ -139,6 +133,16 @@ class MountainSquareTest {
 		// y座標が行の長さ以上
 		square.increase(0, ROWS + 1);
 		assertArray(TEST_SQUARE, square.getSquare());
+	}
+
+	/**
+	 * 引数が有効で，値を増やせるときのincreaseのテスト<br>
+	 *
+	 * ただし，座標の値は4以上にはならない
+	 */
+	@Test
+	void tc2_increase() {
+
 	}
 
 	/**
@@ -160,5 +164,17 @@ class MountainSquareTest {
 				assertEquals(expected[y][x], actual[y][x]);
 			}
 		}
+	}
+
+	private int[][] generate_TEST_SQUARE() {
+		int[][] TEST_SQUARE = new int[COLUMNS][ROWS];
+
+		for (int y = 0; y < ROWS; y++) {
+			for (int x = 0; x < COLUMNS; x++) {
+				TEST_SQUARE[y][x] = 0;
+			}
+		}
+
+		return TEST_SQUARE;
 	}
 }
