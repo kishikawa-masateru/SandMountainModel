@@ -164,24 +164,52 @@ class MountainSquareTest {
 	 */
 	@Test
 	void tc3_inncrease() throws InvalidArgumentException {
-		MountainSquare square = new MountainSquare(COLUMNS, ROWS);
-		int[][] TEST_SQUARE = {
-								{ 0, 1, 0, 1, 0 },
-								{ 1, 0, 1, 0, 1 },
-								{ 0, 1, 0, 1, 0 },
-								{ 1, 0, 1, 0, 1 },
-								{ 0, 1, 0, 1, 0 } };
+		MountainSquare square1 = new MountainSquare(COLUMNS, ROWS);
+
+		// 周囲の値を増やしたときに，周囲の値が4にならない場合
+		int[][] TEST_SQUARE1 = {
+									{ 0, 1, 0, 1, 0 },
+									{ 1, 0, 1, 0, 1 },
+									{ 0, 1, 0, 1, 0 },
+									{ 1, 0, 1, 0, 1 },
+									{ 0, 1, 0, 1, 0 } };
 
 		// 雪山の端，中心の座標を4回インクリメント
 		for (int i = 0; i < 4; i++) {
-			square.increase(0, 0);
-			square.increase(COLUMNS - 1, 0);
-			square.increase(0, ROWS - 1);
-			square.increase(COLUMNS - 1, ROWS - 1);
-			square.increase(COLUMNS / 2, ROWS / 2);
+			square1.increase(0, 0);
+			square1.increase(COLUMNS - 1, 0);
+			square1.increase(0, ROWS - 1);
+			square1.increase(COLUMNS - 1, ROWS - 1);
+			square1.increase(COLUMNS / 2, ROWS / 2);
 		}
 
-		assertArray(TEST_SQUARE, square.getSquare());
+		// 各座標の値をテスト
+		assertArray(TEST_SQUARE1, square1.getSquare());
+
+		// 周囲の値を増やしたときに，周囲の値が4になる場合
+		int[][] TEST_SQUARE2 = {
+									{ 0, 0, 1, 0, 0 },
+									{ 0, 2, 1, 2, 0 },
+									{ 1, 1, 0, 1, 1 },
+									{ 0, 2, 1, 2, 0 },
+									{ 0, 0, 1, 0, 0 } };
+
+		MountainSquare square2 = new MountainSquare(COLUMNS, ROWS);
+		int mid = COLUMNS / 2;
+
+		// 中心とその周囲の値を3増やす
+		for (int i = 0; i < 3; i++) {
+			square2.increase(COLUMNS / 2, ROWS / 2 - 1);
+			square2.increase(COLUMNS / 2 - 1, ROWS / 2);
+			square2.increase(COLUMNS / 2, ROWS / 2);
+			square2.increase(COLUMNS / 2 + 1, ROWS / 2);
+			square2.increase(COLUMNS / 2, ROWS / 2 + 1);
+		}
+		// 中心インクリメント
+		square2.increase(COLUMNS / 2, ROWS / 2);
+
+		// 各座標の値をテスト
+		assertArray(TEST_SQUARE2, square2.getSquare());
 	}
 
 	/**
