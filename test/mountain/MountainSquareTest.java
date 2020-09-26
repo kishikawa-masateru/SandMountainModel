@@ -166,6 +166,10 @@ class MountainSquareTest {
 		}
 	}
 
+	/**
+	 * テストケースを作成
+	 * @return
+	 */
 	private int[][] generate_TEST_SQUARE() {
 		int[][] TEST_SQUARE = new int[COLUMNS][ROWS];
 
