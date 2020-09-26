@@ -141,9 +141,15 @@ class MountainSquareTest {
 		assertArray(TEST_SQUARE, square.getSquare());
 	}
 
+	/**
+	 * int型の二次元配列同士の比較<br>
+	 *
+	 * @param expected
+	 * @param actual
+	 */
 	private void assertArray(int[][] expected, int[][] actual) {
 
-		// 縦と横の配列の長さが等しくないとテストに失敗する
+		// 配列の縦と横の長さが等しくないとテストに失敗する
 		if (expected.length != actual.length)
 			fail();
 		if (expected[0].length != actual[0].length)
