@@ -160,6 +160,17 @@ class MountainSquareTest {
 	}
 
 	/**
+	 * 引数が有効で，値を増やせるときのincreaseのテスト<br>
+	 *
+	 * ・ 増やす座標は，すべて3<br>
+	 * ・ 端っこの座標，周囲より内側の座標を指定する
+	 */
+	@Test
+	void tc3_inncrease() {
+
+	}
+
+	/**
 	 * int型の二次元配列同士の比較<br>
 	 *
 	 * @param expected
