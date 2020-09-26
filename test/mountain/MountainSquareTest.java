@@ -20,6 +20,21 @@ class MountainSquareTest {
 	private final int ROWS = 10;		// 列数
 
 	/**
+	 * コンストラクタのテスト
+	 */
+	@Test
+	void test_CONSTRUCTOR() {
+
+		// 列数で例外スロー
+		assertThrows(InvalidArgumentException.class, () -> new MountainSquare(-1, 10));
+		assertThrows(InvalidArgumentException.class, () -> new MountainSquare(0, 10));
+
+		// 行数で例外スロー
+		assertThrows(InvalidArgumentException.class, () -> new MountainSquare(10, 0));
+		assertThrows(InvalidArgumentException.class, () -> new MountainSquare(10, -1));
+	}
+
+	/**
 	 * アクセスできないx座標の値を指定したときのテスト<br>
 	 * y座標は正しい値
 	 *
