@@ -39,7 +39,7 @@ public class MountainSquare {
 		if (canIncrease(x, y))
 			square[y][x]++;
 
-		if (square[y][x] == 4) {
+		if (canIncrease(x, y) && square[y][x] == 4) {
 			// (x, y) の値が4になったら，以下の処理を実行する
 			// 1．(x, y) の値を0にする
 			square[y][x] = 0;
