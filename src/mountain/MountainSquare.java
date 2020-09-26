@@ -2,15 +2,19 @@ package mountain;
 
 import util.InvalidArgumentException;
 
-/**
+/**************************
  * 上から見た砂山
  * @author masateru
- *
- */
+ **************************/
 public class MountainSquare {
 
 	private int[][] square;		//	上から見た砂山の各座標
 
+	/**
+	 * @param column 0以上の列数
+	 * @param row 0以上の行数
+	 * @throws InvalidArgumentException {@literal column <= 0 } <b> or </b> {@literal row <= 0}
+	 */
 	public MountainSquare(int column, int row) throws InvalidArgumentException {
 
 		if (column <= 0)
